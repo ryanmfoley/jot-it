@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Route } from 'react-router-dom';
-import '../App.css';
+import '../';
 import Header from './Header';
 import Project from './Project';
 // import Task from './Task';
@@ -13,7 +13,7 @@ function App() {
   return (
     <div>
       <Header />
-      <Route path="/" exact render={() => <Project projects={projects} setProjects={setProjects}/>}/>
+      <Route path="/" exact render={(routerProps) => <Project match={routerProps.match} projects={projects} setProjects={setProjects}/>}/>
     </div>
   );
 }
