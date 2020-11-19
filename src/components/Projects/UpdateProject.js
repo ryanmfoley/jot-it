@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Task = () => {
+const UpdateProject = () => {
     return (
         <div>
             
@@ -8,4 +8,4 @@ const Task = () => {
     );
 };
 
-export default Task;
+export default UpdateProject;
