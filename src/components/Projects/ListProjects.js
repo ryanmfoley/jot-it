@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
 import Jumbotron from 'react-bootstrap/Jumbotron'
 // import Col from 'react-bootstrap/Col'
@@ -32,17 +33,20 @@ const ListProjects = () => {
 		return <h5>Loading...</h5>
 	}
 	return (
-
 		<Jumbotron>
 			<Card.Body>
 				{projects.map((project) => (
 					<div key={project._id}>
 						<Card>
-							<h2>{project.title}</h2>
-							<p>{project.description}</p>
-							<Tasks tasks={project.tasks}/>
-							<p>{project.links}</p>
-							<p>{project.dueDate}</p>
+							<Link to={`projects/${project._id}`}>
+								<div onClick={() => {}}>
+									<h2>{project.title}</h2>
+									<p>{project.description}</p>
+									<p>{project.tasks}</p>
+									<p>{project.links}</p>
+									<p>{project.dueDate}</p>
+								</div>
+							</Link>
 							<Button
 								variant='outline-danger'
 								onClick={() => {
@@ -55,7 +59,6 @@ const ListProjects = () => {
 				))}
 			</Card.Body>
 		</Jumbotron>
-		
 	)
 }
 
