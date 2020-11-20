@@ -31,7 +31,7 @@ const CreateProject = () => {
 
 		taskArray.push(task1)
 		taskArray.push(task2)
-		console.log(taskArray)
+		// console.log(taskArray)
 
 		const data = {
 			title: event.target.title.value,
