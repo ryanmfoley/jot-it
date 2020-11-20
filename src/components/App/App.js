@@ -9,11 +9,6 @@ import Header from '../Header/Header'
 import Projects from '../Projects/Projects'
 import Project from '../Projects/Project'
 import CreateProject from '../Projects/CreateProject'
-import UpdateProject from '../Projects/UpdateProject'
-
-
-// import Task from './Task';
-// import Quote from './Quote';
 import './App.scss'
 
 function App() {

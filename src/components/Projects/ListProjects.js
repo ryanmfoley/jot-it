@@ -9,7 +9,7 @@ import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 
 import ProjectsContext from './ProjectsContext'
-import ProjectIdContext from './ProjectIdContext'
+import Tasks from '../Tasks/Tasks'
 
 const ListProjects = () => {
 	const [deleteProject, setDeleteProject] = useState('')
@@ -35,6 +35,7 @@ const ListProjects = () => {
 		return <h5>Loading...</h5>
 	}
 	return (
+
 		<Jumbotron>
 			<Card.Body>
 				{projects.map((project) => (
@@ -46,7 +47,7 @@ const ListProjects = () => {
 							}}>
 							<h2>{project.title}</h2>
 							<p>{project.description}</p>
-							<p>{project.tasks}</p>
+							<Tasks tasks={project.tasks}/>
 							<p>{project.links}</p>
 							<p>{project.dueDate}</p>
 							</div>
@@ -62,6 +63,7 @@ const ListProjects = () => {
 				))}
 			</Card.Body>
 		</Jumbotron>
+		
 	)
 }
 
