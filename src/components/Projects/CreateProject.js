@@ -16,7 +16,7 @@ const CreateProject = () => {
 	const handleCreate = (event) => {
 		event.preventDefault()
 
-		const url = 'http://localhost:8000/api/projects'
+		const url = 'https://shielded-scrubland-66990.herokuapp.com/api/projects'
 
 		let taskArray = []
 		let task1 = {
@@ -64,7 +64,7 @@ const CreateProject = () => {
 		<div>
 			<Container>
 				<Form
-					action='http://localhost:8000/api/projects/'
+					action='https://shielded-scrubland-66990.herokuapp.com/api/projects/'
 					onSubmit={handleCreate}>
 					<Form.Group>
 						<Form.Label>Project</Form.Label>

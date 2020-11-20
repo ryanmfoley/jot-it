@@ -14,12 +14,11 @@ import Tasks from '../Tasks/Tasks'
 const ListProjects = () => {
 	const [deleteProject, setDeleteProject] = useState('')
 	const { projects, setProjects } = useContext(ProjectsContext)
-	const { projectId, setProjectId } = useContext(ProjectIdContext)
 
 	useEffect(() => {
 		const handleDelete = () => {
 			if (deleteProject) {
-				const url = `http://localhost:8000/api/projects/${deleteProject}`
+				const url = `https://shielded-scrubland-66990.herokuapp.com/api/projects/${deleteProject}`
 				axios.delete(url).then((res) => {
 					setProjects(
 						projects.filter((project) => project._id !== deleteProject)
@@ -41,16 +40,11 @@ const ListProjects = () => {
 				{projects.map((project) => (
 					<div key={project._id}>
 						<Card>
-						<div className='project' onClick={() => {
-							setProjectId(project._id)
-							// console.log(project._id)
-							}}>
 							<h2>{project.title}</h2>
 							<p>{project.description}</p>
 							<Tasks tasks={project.tasks}/>
 							<p>{project.links}</p>
 							<p>{project.dueDate}</p>
-							</div>
 							<Button
 								variant='outline-danger'
 								onClick={() => {

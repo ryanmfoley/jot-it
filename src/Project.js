@@ -12,7 +12,7 @@ const Project = ({ projects, setProjects, match }) => {
     // console.log(projects[0]._id)
 
     useEffect(() => {
-        axios.get(`http://localhost:8000/api/projects/`)
+        axios.get(`https://shielded-scrubland-66990.herokuapp.com/api/projects/`)
         .then(res => setProjects(res.data)) //Why res.data?
         .catch(console.error)
     }, []);
@@ -20,7 +20,7 @@ const Project = ({ projects, setProjects, match }) => {
     
     const handlePost = (event) => {
         event.preventDefault()
-        const url = 'http://localhost:8000/api/projects'
+        const url = 'https://shielded-scrubland-66990.herokuapp.com/api/projects'
         const data = 
         axios({
             method: 'POST',
@@ -31,7 +31,7 @@ const Project = ({ projects, setProjects, match }) => {
     
     const handleDelete = () => {
         axios.delete({
-            url: `http://localhost:8000/api/projects/${projects._id}`, 
+            url: `https://shielded-scrubland-66990.herokuapp.com/api/projects/${projects._id}`, 
         })
     }
 
