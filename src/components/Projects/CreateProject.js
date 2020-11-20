@@ -29,8 +29,14 @@ const CreateProject = () => {
 			description: event.target.task2.value
 		}
 
+		let task3 = {
+			completed: false,
+			description: event.target.task3.value
+		}
+
 		taskArray.push(task1)
 		taskArray.push(task2)
+		taskArray.push(task3)
 		// console.log(taskArray)
 
 		const data = {
@@ -92,6 +98,15 @@ const CreateProject = () => {
 						<Form.Control
 							type='text'
 							id='task2'
+							rows={1}
+							required={false}
+						/>
+					</Form.Group>
+					<Form.Group>
+						<Form.Label>Task Three</Form.Label>
+						<Form.Control
+							type='text'
+							id='task3'
 							rows={1}
 							required={false}
 						/>

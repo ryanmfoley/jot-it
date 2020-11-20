@@ -7,7 +7,11 @@ const Task = ({ tasks }) => {
         <div>
             {tasks.map((task => {
                 return (
-                    <p>{task.description}</p>
+                    <ul>
+						<li>
+							{task.description}
+						</li>
+					</ul>
                 )
             }))}
         </div>
