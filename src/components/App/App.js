@@ -5,8 +5,6 @@ import ProjectsContext from '../Projects/ProjectsContext'
 import Header from '../Header/Header'
 import Projects from '../Projects/Projects'
 import CreateProject from '../Projects/CreateProject'
-// import Task from './Task';
-// import Quote from './Quote';
 import './App.scss'
 
 function App() {
