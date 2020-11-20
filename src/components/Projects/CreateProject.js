@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react'
+import { Redirect } from 'react-router-dom'
 import Container from 'react-bootstrap/Container'
 import Form from 'react-bootstrap/Form'
 import FormControl from 'react-bootstrap/FormControl'
@@ -9,9 +10,10 @@ import axios from 'axios'
 import ProjectsContext from './ProjectsContext'
 
 const CreateProject = () => {
+	const [redirect, setRedirect] = useState(false)
 	const { projects, setProjects } = useContext(ProjectsContext)
-	const { newProject, setNewProject} = useState('')
-	const { newProjectTasks, setNewProjectTasks} = useState([])
+	const { newProject, setNewProject } = useState('')
+	const { newProjectTasks, setNewProjectTasks } = useState([])
 
 	const handleCreate = (event) => {
 		event.preventDefault()
@@ -21,17 +23,17 @@ const CreateProject = () => {
 		let taskArray = []
 		let task1 = {
 			completed: false,
-			description: event.target.task1.value
+			description: event.target.task1.value,
 		}
 
 		let task2 = {
 			completed: false,
-			description: event.target.task2.value
+			description: event.target.task2.value,
 		}
 
 		let task3 = {
 			completed: false,
-			description: event.target.task3.value
+			description: event.target.task3.value,
 		}
 
 		taskArray.push(task1)
@@ -50,22 +52,25 @@ const CreateProject = () => {
 			event.target.title.value = ''
 			event.target.description.value = ''
 			event.target.date.value = ''
-			event.target.task1.value= ''
-			event.target.task2.value= ''
+			event.target.task1.value = ''
+			event.target.task2.value = ''
 		}
 
 		axios
 			.post(url, data)
 			.then((res) => setProjects([...projects, res.data]))
 			.then((res) => clearForm())
+			.then((res) => setRedirect(true))
+	}
+
+	if (redirect) {
+		return <Redirect to='/projects' />
 	}
 
 	return (
 		<div>
 			<Container>
-				<Form
-					action='http://localhost:8000/api/projects/'
-					onSubmit={handleCreate}>
+				<Form onSubmit={handleCreate}>
 					<Form.Group>
 						<Form.Label>Project</Form.Label>
 						<Form.Control
@@ -86,39 +91,19 @@ const CreateProject = () => {
 					</Form.Group>
 					<Form.Group>
 						<Form.Label>Task One</Form.Label>
-						<Form.Control
-							type='text'
-							id='task1'
-							rows={1}
-							required={false}
-						/>
+						<Form.Control type='text' id='task1' rows={1} required={false} />
 					</Form.Group>
 					<Form.Group>
 						<Form.Label>Task Two</Form.Label>
-						<Form.Control
-							type='text'
-							id='task2'
-							rows={1}
-							required={false}
-						/>
+						<Form.Control type='text' id='task2' rows={1} required={false} />
 					</Form.Group>
 					<Form.Group>
 						<Form.Label>Task Three</Form.Label>
-						<Form.Control
-							type='text'
-							id='task3'
-							rows={1}
-							required={false}
-						/>
+						<Form.Control type='text' id='task3' rows={1} required={false} />
 					</Form.Group>
 					<Form.Group>
 						<Form.Label>Due Date</Form.Label>
-						<Form.Control
-							type='date'
-							id='date'
-							placeholder='Due Date'
-							required={true}
-						/>
+						<Form.Control type='date' id='date' placeholder='Due Date' />
 					</Form.Group>
 					<Button variant='primary' type='submit' block>
 						Submit
