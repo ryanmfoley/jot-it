@@ -3,7 +3,6 @@ import Container from 'react-bootstrap/Container'
 import axios from 'axios'
 
 import ProjectsContext from './ProjectsContext'
-import CreateProject from './CreateProject'
 import ListProjects from './ListProjects'
 const Projects = () => {
 	const { projects, setProjects } = useContext(ProjectsContext)
@@ -19,7 +18,6 @@ const Projects = () => {
 		<>
 			<div>
 				<Container>
-					{/* <CreateProject /> */}
 					<ListProjects projects={projects} />
 				</Container>
 			</div>
