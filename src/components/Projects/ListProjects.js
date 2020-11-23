@@ -32,28 +32,7 @@ const ListProjects = () => {
 	if (!projects.length) {
 		return <h5>Loading...</h5>
 	}
-	// return (
-	// 	<Jumbotron>
-	// 		<Card.Body>
-	// 			{projects.map((project) => (
-	// 				<Card key={project._id} className='projectCard'>
-	// 					<Link to={`projects/${project._id}`}>
-	// 						<h2>{project.title}</h2>
-	// 						<p>{project.description}</p>
-	// 						<p>{project.dueDate.slice(0, 10)}</p>
-	// 					</Link>
-	// 					<Button
-	// 						variant='outline-danger'
-	// 						onClick={() => {
-	// 							setDeleteProject(project._id)
-	// 						}}>
-	// 						Delete
-	// 					</Button>
-	// 				</Card>
-	// 			))}
-	// 		</Card.Body>
-	// 	</Jumbotron>
-	// )
+
 	return (
 		<Jumbotron className='projects-list'>
 			{projects.map((project) => (
