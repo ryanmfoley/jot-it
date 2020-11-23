@@ -5,12 +5,10 @@ import Header from '../Header/Header'
 import Projects from '../Projects/Projects'
 import Project from '../Projects/Project'
 import CreateProject from '../Projects/CreateProject'
-// import Task from './Task';
-// import Quote from './Quote';
+import UpdateProject from '../Projects/UpdateProject'
 import Chat from '../Chat/Chat'
 import Join from '../Chat/Join'
 import './App.scss'
-
 
 function App() {
 	const [projects, setProjects] = useState([])
@@ -20,13 +18,12 @@ function App() {
 			<ProjectsContext.Provider value={{ projects, setProjects }}>
 				<Header />
 				<Route path='/projects' exact component={Projects} />
-				<Route
-					path='/projects/:id'
-					render={(routerProps) => {
-						return <Project match={routerProps.match} />
-					}}
-				/>
+				<Route exact path='/projects/:id' component={Project} />
 				<Route path='/create-project' component={CreateProject} />
+				<Route
+					path='/projects/:id/update-project'
+					render={(routerProps) => <UpdateProject match={routerProps.match} />}
+				/>
 				<Route path='/chat' exact component={Join} />
 				<Route
 					path='/chat/:name&:room'

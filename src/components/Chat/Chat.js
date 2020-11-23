@@ -20,8 +20,7 @@ const Chat = ({ match }) => {
 	const [usersInRoom, setUsersInRoom] = useState([])
 
 	useEffect(() => {
-		// socket = io(ENDPOINT)
-		socket = io('http://localhost:8000')
+		socket = io(ENDPOINT)
 
 		setName(match.params.name)
 		setRoom(match.params.room)
@@ -36,23 +35,25 @@ const Chat = ({ match }) => {
 			setUsersInRoom(users)
 		})
 
+		socket.on('chat-message', ({ user, text }) => {
+			console.log('chat-message', user, text)
+			setMessages((messages) => [...messages, text])
+
 		// }
 	}, [name, room])
 
 	// useEffect(() => {
-	// 	// Listen for message socket events
-	// 	console.log('blah')
-	// 	socket.on('chat-message', (text) => {
-	// 		// setMessages((messages) => [...messages, { user, message }])
+	// 	socket.on('chat-message', ({ user, text }) => {
+	// 		setMessages((messages) => [...messages, text])
 	// 	})
-
-	// }, [usersInRoom])
+	// }, [message])
 
 	const handleSend = (event) => {
 		event.preventDefault()
 
 		if (message) {
 			// Send message to server
+			// console.log('send message', message)
 			socket.emit('send-chat-message', message, () => setMessage(''))
 		}
 	}
