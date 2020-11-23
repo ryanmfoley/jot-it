@@ -22,7 +22,7 @@
 .displayMessages {
 	grid-column: 2/4;
 	grid-row: 2;
-	/* border: 1px solid green; */
+	border: 1px solid green;
 }
 
 .sendMessage {

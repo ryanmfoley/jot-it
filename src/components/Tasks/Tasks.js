@@ -1,21 +1,15 @@
-import React, {useState, useEffect} from 'react';
-import axios from 'axios'
+import React from 'react'
 
-const Task = ({ tasks }) => {
+import Task from './Task'
 
-    return (
-        <div>
-            {tasks.map((task => {
-                return (
-                    <ul>
-						<li>
-							{task.description}
-						</li>
-					</ul>
-                )
-            }))}
-        </div>
-    );
-};
+const Tasks = ({ tasks, setRefresh }) => {
+	return (
+		<ul>
+			{tasks.map((task) => (
+				<Task key={task._id} task={task} setRefresh={setRefresh} />
+			))}
+		</ul>
+	)
+}
 
-export default Task;
+export default Tasks
