@@ -6,7 +6,7 @@ import ProjectsContext from './ProjectsContext'
 import ListProjects from './ListProjects'
 
 const Projects = () => {
-	const { projects, setProjects } = useContext(ProjectsContext)
+	const { setProjects } = useContext(ProjectsContext)
 
 	// GET Projects
 	useEffect(() => {
@@ -21,7 +21,7 @@ const Projects = () => {
 		<>
 			<div>
 				<Container>
-					<ListProjects projects={projects} />
+					<ListProjects />
 				</Container>
 			</div>
 		</>

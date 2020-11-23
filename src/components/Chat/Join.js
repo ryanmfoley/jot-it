@@ -46,7 +46,8 @@ const Join = () => {
 						<Form.Label>Chatroom</Form.Label>
 						<Form.Control
 							as='select'
-							onChange={(event) => setRoom(event.target.value)}>
+							onChange={(event) => setRoom(event.target.value)}
+							custom>
 							<option hidden=''>Project Chatroom</option>
 							{projects.map((project) => (
 								<option key={project._id}>{project.title}</option>

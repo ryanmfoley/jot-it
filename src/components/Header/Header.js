@@ -18,7 +18,7 @@ const Header = () => {
 							Projects
 						</Nav.Link>
 						<Nav.Link as={Link} to='/chat'>
-							Chatroom
+							Chat
 						</Nav.Link>
 						<Nav.Link as={Link} to='/'>
 							Quotes
