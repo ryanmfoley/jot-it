@@ -1,18 +1,25 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
-
 import Card from 'react-bootstrap/Card'
-import Button from 'react-bootstrap/Button'
+import ENDPOINT from '../../config/config'
+
+import Tasks from '../Tasks/Tasks'
 
 const Project = ({ match }) => {
 	const [project, setProject] = useState({})
+	const [refresh, setRefresh] = useState(true)
 
 	useEffect(() => {
 		const id = match.params.id
-		const url = `http://localhost:8000/api/projects/${id}`
-
-		axios.get(url).then((json) => setProject(json.data))
-	}, [])
+		const url = `${ENDPOINT}/api/projects/${id}`
+		if (refresh) {
+			axios.get(url).then((json) => {
+				setProject(json.data)
+				setRefresh(false)
+			})
+		}
+	}, [refresh])
 
 	if (!Object.keys(project).length) {
 		return <h2>Loading...</h2>
@@ -21,24 +28,14 @@ const Project = ({ match }) => {
 	return (
 		<div>
 			<Card.Body>
-				<div key={project._id}>
-					<Card>
-						<div onClick={() => {}}>
-							<h2>{project.title}</h2>
-							<p>{project.description}</p>
-							<p>{project.tasks}</p>
-							<p>{project.links}</p>
-							<p>{project.dueDate}</p>
-						</div>
-						{/* <Button
-							variant='outline-danger'
-							onClick={() => {
-								setDeleteProject(project._id)
-							}}>
-							Delete
-						</Button> */}
-					</Card>
-				</div>
+				<Link to={`/projects/${project._id}/update-project`}>Update</Link>
+				<Card>
+					<h2>{project.title}</h2>
+					<p>{project.description}</p>
+					<Tasks tasks={project.tasks} setRefresh={setRefresh} />
+					<p>{project.links}</p>
+					<p>{project.dueDate}</p>
+				</Card>
 			</Card.Body>
 		</div>
 	)

@@ -1,0 +1,33 @@
+.chatContainer {
+	display: grid;
+	grid-template-columns: minmax(120px, 1fr) 4fr;
+	grid-template-rows: 40px minmax(400px, 1fr) 40px;
+	border: 1px solid black;
+}
+
+.chatHeader {
+	display: flex;
+	grid-column: 1/4;
+	grid-row: 1;
+	justify-content: space-between;
+	/* border: 1px solid blue; */
+}
+
+.chatSideBar {
+	grid-column: 1;
+	grid-row: 2;
+	background-color: aquamarine;
+}
+
+.displayMessages {
+	grid-column: 2/4;
+	grid-row: 2;
+	border: 1px solid green;
+}
+
+.sendMessage {
+	display: flex;
+	grid-column: 1/4;
+	grid-row: 3;
+	/* border: 1px solid red; */
+}

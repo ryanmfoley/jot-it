@@ -1,16 +1,17 @@
 import React, { useEffect, useContext } from 'react'
 import Container from 'react-bootstrap/Container'
 import axios from 'axios'
+import ENDPOINT from '../../config/config'
 
 import ProjectsContext from './ProjectsContext'
 import ListProjects from './ListProjects'
 
 const Projects = () => {
-	const { projects, setProjects } = useContext(ProjectsContext)
+	const { setProjects } = useContext(ProjectsContext)
 
 	// GET Projects
 	useEffect(() => {
-		const url = `http://localhost:8000/api/projects/`
+		const url = `${ENDPOINT}/api/projects/`
 		axios
 			.get(url)
 			.then((res) => setProjects(res.data))
@@ -21,7 +22,7 @@ const Projects = () => {
 		<>
 			<div>
 				<Container>
-					<ListProjects projects={projects} />
+					<ListProjects />
 				</Container>
 			</div>
 		</>

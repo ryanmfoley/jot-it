@@ -5,8 +5,6 @@ import Container from 'react-bootstrap/Container'
 import Form from 'react-bootstrap/Form'
 import axios from 'axios'
 
-import ProjectsContext from '../Projects/ProjectsContext'
-
 const Join = () => {
 	const [name, setName] = useState('')
 	const [room, setRoom] = useState('')
@@ -46,7 +44,8 @@ const Join = () => {
 						<Form.Label>Chatroom</Form.Label>
 						<Form.Control
 							as='select'
-							onChange={(event) => setRoom(event.target.value)}>
+							onChange={(event) => setRoom(event.target.value)}
+							custom>
 							<option hidden=''>Project Chatroom</option>
 							{projects.map((project) => (
 								<option key={project._id}>{project.title}</option>
