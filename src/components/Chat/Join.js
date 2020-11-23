@@ -5,8 +5,6 @@ import Container from 'react-bootstrap/Container'
 import Form from 'react-bootstrap/Form'
 import axios from 'axios'
 
-import ProjectsContext from '../Projects/ProjectsContext'
-
 const Join = () => {
 	const [name, setName] = useState('')
 	const [room, setRoom] = useState('')
