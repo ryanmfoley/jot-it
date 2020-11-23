@@ -2,10 +2,8 @@ import React, { useState, useEffect } from 'react'
 import Button from 'react-bootstrap/Button'
 import Container from 'react-bootstrap/Container'
 import Form from 'react-bootstrap/Form'
-// import Col from 'react-bootstrap/Col'
 import io from 'socket.io-client'
 import ENDPOINT from '../../config/config'
-import queryString from 'query-string'
 
 import ChatHeader from './ChatHeader'
 import UsersInRoom from './UsersInRoom'
@@ -14,7 +12,7 @@ import './Chat.css'
 
 let socket
 
-const Chat = ({ match, location }) => {
+const Chat = ({ match }) => {
 	const [name, setName] = useState('')
 	const [room, setRoom] = useState('')
 	const [message, setMessage] = useState('')
@@ -23,32 +21,32 @@ const Chat = ({ match, location }) => {
 
 	useEffect(() => {
 		socket = io(ENDPOINT)
+
 		setName(match.params.name)
 		setRoom(match.params.room)
-		if (name && room) {
-			// console.log('name room', name, room)
 
+		if (name && room) {
 			// Join chatroom
 			socket.emit('joinRoom', { name, room })
-
-			// Get room and users info
-			socket.on('usersInRoom', (users) => {
-				setUsersInRoom(users)
-				console.log(users)
-			})
 		}
-	}, [name, room])
+	}, [])
 
-	// useEffect(() => {
-	// 	// Listen for message socket events
-	// 	socket.on('chat-message', (message) => {
-	// 		setMessages([...messages, message])
-	// 	})
-	// }, [messages])
+	useEffect(() => {
+		// Listen for message socket events
+		socket.on('chat-message', (message) => {
+			//////////// WHY DOES SETMESSAGES REQUIRE AN ARROW FUNCTION??? /////////////////
+			setMessages((messages) => [...messages, message])
+			// console.log(message)
+		})
+
+		// Get room and users info
+		socket.on('usersInRoom', (users) => {
+			setUsersInRoom(users)
+		})
+	}, [])
 
 	const handleSend = (event) => {
 		event.preventDefault()
-		// console.log(`Message: ${message}`)
 
 		if (message) {
 			// Send message to server
@@ -67,8 +65,6 @@ const Chat = ({ match, location }) => {
 				<UsersInRoom room={room} usersInRoom={usersInRoom} />
 				<DisplayMessages name={name} messages={messages} />
 				<Form className='sendMessage'>
-					{/* <Form.Row> */}
-					{/* <Col> */}
 					<Form.Control
 						type='text'
 						id='message'
@@ -80,11 +76,9 @@ const Chat = ({ match, location }) => {
 						}
 						required={true}
 					/>
-					{/* </Col> */}
 					<Button variant='primary' onClick={(event) => handleSend(event)}>
 						Send
 					</Button>
-					{/* </Form.Row> */}
 				</Form>
 			</div>
 		</Container>
