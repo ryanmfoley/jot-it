@@ -16,14 +16,14 @@ const UsersInRoom = ({ room, usersInRoom }) => {
 		)
 	} else if (usersInRoom.length) {
 		return (
-			<div className='usersInRoom'>
+			<div className='chatSideBar'>
 				<ul>
 					<li>{usersInRoom[0].name}</li>
 				</ul>
 			</div>
 		)
 	} else {
-		return <div className='usersInRoom'></div>
+		return <div className='chatSideBar'></div>
 	}
 }
 
