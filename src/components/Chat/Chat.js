@@ -16,34 +16,37 @@ const Chat = ({ match }) => {
 	const [name, setName] = useState('')
 	const [room, setRoom] = useState('')
 	const [message, setMessage] = useState('')
-	const [messages, setMessages] = useState('')
+	const [messages, setMessages] = useState([])
 	const [usersInRoom, setUsersInRoom] = useState([])
 
 	useEffect(() => {
-		socket = io(ENDPOINT)
+		// socket = io(ENDPOINT)
+		socket = io('http://localhost:8000')
 
 		setName(match.params.name)
 		setRoom(match.params.room)
 
-		if (name && room) {
-			// Join chatroom
-			socket.emit('joinRoom', { name, room })
-		}
-	}, [])
-
-	useEffect(() => {
-		// Listen for message socket events
-		socket.on('chat-message', (message) => {
-			//////////// WHY DOES SETMESSAGES REQUIRE AN ARROW FUNCTION??? /////////////////
-			setMessages((messages) => [...messages, message])
-			// console.log(message)
-		})
+		// if (name && room) {
+		// if (match.params.name && match.params.room) {
+		// Join chatroom
+		socket.emit('joinRoom', { name, room })
 
 		// Get room and users info
-		socket.on('usersInRoom', (users) => {
+		socket.on('usersInRoom', ({ users }) => {
 			setUsersInRoom(users)
 		})
-	}, [])
+
+		// }
+	}, [name, room])
+
+	// useEffect(() => {
+	// 	// Listen for message socket events
+	// 	console.log('blah')
+	// 	socket.on('chat-message', (text) => {
+	// 		// setMessages((messages) => [...messages, { user, message }])
+	// 	})
+
+	// }, [usersInRoom])
 
 	const handleSend = (event) => {
 		event.preventDefault()
