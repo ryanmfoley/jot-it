@@ -3,13 +3,10 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 
 import Jumbotron from 'react-bootstrap/Jumbotron'
-// import Col from 'react-bootstrap/Col'
-// import Row from 'react-bootstrap/Row'
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 
 import ProjectsContext from './ProjectsContext'
-import Tasks from '../Tasks/Tasks'
 
 const ListProjects = () => {
 	const [deleteProject, setDeleteProject] = useState('')
@@ -37,26 +34,24 @@ const ListProjects = () => {
 		<Jumbotron>
 			<Card.Body>
 				{projects.map((project) => (
-					<div key={project._id}>
-						<Card>
-							<Link to={`projects/${project._id}`}>
-								<div onClick={() => {}}>
-									<h2>{project.title}</h2>
-									<p>{project.description}</p>
-									<p>{project.tasks}</p>
-									<p>{project.links}</p>
-									<p>{project.dueDate}</p>
-								</div>
-							</Link>
-							<Button
-								variant='outline-danger'
-								onClick={() => {
-									setDeleteProject(project._id)
-								}}>
-								Delete
-							</Button>
-						</Card>
-					</div>
+					<Card key={project._id}>
+						<Link to={`projects/${project._id}`}>
+							<div onClick={() => {}}>
+								<h2>{project.title}</h2>
+								<p>{project.description}</p>
+								{/* <p>{project.tasks}</p> */}
+								<p>{project.links}</p>
+								<p>{project.dueDate}</p>
+							</div>
+						</Link>
+						<Button
+							variant='outline-danger'
+							onClick={() => {
+								setDeleteProject(project._id)
+							}}>
+							Delete
+						</Button>
+					</Card>
 				))}
 			</Card.Body>
 		</Jumbotron>
