@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button'
 import Container from 'react-bootstrap/Container'
 import Form from 'react-bootstrap/Form'
 import axios from 'axios'
+import ENDPOINT from '../../config/config'
 
 import './Join.css'
 
@@ -20,7 +21,7 @@ const Join = () => {
 
 	// GET Projects
 	useEffect(() => {
-		const url = `http://localhost:8000/api/projects/`
+		const url = `${ENDPOINT}/api/projects/`
 		axios
 			.get(url)
 			.then((res) => setProjects(res.data))
