@@ -12,8 +12,4 @@ const Tasks = ({ tasks, setRefresh }) => {
 	)
 }
 
-<<<<<<< HEAD
-export default Task;
-=======
 export default Tasks
->>>>>>> dev

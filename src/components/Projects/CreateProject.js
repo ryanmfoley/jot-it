@@ -11,20 +11,11 @@ import ProjectsContext from './ProjectsContext'
 const CreateProject = () => {
 	const [redirect, setRedirect] = useState(false)
 	const { projects, setProjects } = useContext(ProjectsContext)
-<<<<<<< HEAD
-	const { newProject, setNewProject } = useState('')
-	const { newProjectTasks, setNewProjectTasks } = useState([])
-=======
->>>>>>> dev
 
 	const handleCreate = (event) => {
 		event.preventDefault()
 
-<<<<<<< HEAD
-		const url = 'https://shielded-scrubland-66990.herokuapp.com/api/projects'
-=======
 		const taskArray = []
->>>>>>> dev
 
 		const task1 = {
 			completed: false,
@@ -58,10 +49,7 @@ const CreateProject = () => {
 			event.target.date.value = ''
 			event.target.task1.value = ''
 			event.target.task2.value = ''
-<<<<<<< HEAD
-=======
 			event.target.task3.value = ''
->>>>>>> dev
 		}
 
 		const url = ENDPOINT + '/api/projects'
