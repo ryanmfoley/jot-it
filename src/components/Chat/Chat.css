@@ -1,33 +1,63 @@
-.chatContainer {
+.chat-container {
 	display: grid;
+	height: 600px;
 	grid-template-columns: minmax(120px, 1fr) 4fr;
 	grid-template-rows: 40px minmax(400px, 1fr) 40px;
-	border: 1px solid black;
+	margin-top: 75px;
+	border: 3px solid #274c77;
+	border-radius: 25px;
+	font-family: 'Hammersmith One', sans-serif;
 }
 
-.chatHeader {
+.chat-header {
 	display: flex;
 	grid-column: 1/4;
 	grid-row: 1;
 	justify-content: space-between;
-	/* border: 1px solid blue; */
+	background-color: #274c77;
 }
 
-.chatSideBar {
+.chat-header h3 {
+	padding-left: 40px;
+	color: #e7ecef;
+}
+
+.chat-header button {
+	/* color: #274c77; */
+	border: 2px solid #274c77;
+}
+
+.chat-sidebar {
 	grid-column: 1;
 	grid-row: 2;
-	background-color: aquamarine;
+	background-color: #a3cef1;
 }
 
-.displayMessages {
+.display-messages {
 	grid-column: 2/4;
 	grid-row: 2;
-	border: 1px solid green;
+	background-color: #e7ecef;
 }
 
-.sendMessage {
+.send-message {
 	display: flex;
 	grid-column: 1/4;
 	grid-row: 3;
-	/* border: 1px solid red; */
+	border: 1px solid #274c77;
+	border-radius: 5px;
+}
+
+ul {
+	padding-top: 50px;
+	list-style: none; /* Remove default bullets */
+}
+
+ul li::before {
+	content: '\2022'; /* Add content: \2022 is the CSS Code/unicode for a bullet */
+	/* color: greenyellow; */
+	color: red; /* Change the color */
+	font-weight: bold; /* If you want it to be bold */
+	display: inline-block; /* Needed to add space between the bullet and the text */
+	width: 1em; /* Also needed for space (tweak if needed) */
+	margin-left: -1em; /* Also needed for space (tweak if needed) */
 }

@@ -40,7 +40,7 @@ const CreateProject = () => {
 			title: event.target.title.value,
 			description: event.target.description.value,
 			dueDate: event.target.date.value,
-			// tasks: taskArray,
+			tasks: taskArray,
 		}
 
 		const clearForm = () => {

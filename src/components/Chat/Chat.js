@@ -25,34 +25,27 @@ const Chat = ({ match }) => {
 		setName(match.params.name)
 		setRoom(match.params.room)
 
-		// if (name && room) {
-		// if (match.params.name && match.params.room) {
-		// Join chatroom
-		socket.emit('joinRoom', { name, room })
+		if (name && room) {
+			// if (match.params.name && match.params.room) {
+			// Join chatroom
+			socket.emit('joinRoom', { name, room })
 
-		// Get room and users info
-		socket.on('usersInRoom', ({ users }) => {
-			setUsersInRoom(users)
-		})
+			// Get room and users info
+			socket.on('usersInRoom', ({ users }) => {
+				setUsersInRoom(users)
+			})
 
-		socket.on('chat-message', ({ user, text }) => {
-			console.log('chat-message', user, text)
-			setMessages((messages) => [...messages, text])
-		})
+			socket.on('chat-message', (message) => {
+				setMessages((messages) => [...messages, message])
+			})
+		}
 	}, [name, room])
-
-	// useEffect(() => {
-	// 	socket.on('chat-message', ({ user, text }) => {
-	// 		setMessages((messages) => [...messages, text])
-	// 	})
-	// }, [message])
 
 	const handleSend = (event) => {
 		event.preventDefault()
 
 		if (message) {
 			// Send message to server
-			// console.log('send message', message)
 			socket.emit('send-chat-message', message, () => setMessage(''))
 		}
 	}
@@ -62,28 +55,26 @@ const Chat = ({ match }) => {
 	}
 
 	return (
-		<Container>
-			<div className='chatContainer'>
-				<ChatHeader leaveRoom={leaveRoom} />
-				<UsersInRoom room={room} usersInRoom={usersInRoom} />
-				<DisplayMessages name={name} messages={messages} />
-				<Form className='sendMessage'>
-					<Form.Control
-						type='text'
-						id='message'
-						placeholder='Send Message'
-						value={message}
-						onChange={(event) => setMessage(event.target.value)}
-						onKeyPress={(event) =>
-							event.key === 'Enter' ? handleSend(event) : null
-						}
-						required={true}
-					/>
-					<Button variant='primary' onClick={(event) => handleSend(event)}>
-						Send
-					</Button>
-				</Form>
-			</div>
+		<Container className='chat-container'>
+			<ChatHeader leaveRoom={leaveRoom} />
+			<UsersInRoom room={room} usersInRoom={usersInRoom} />
+			<DisplayMessages name={name} messages={messages} />
+			<Form className='send-message'>
+				<Form.Control
+					type='text'
+					id='message'
+					placeholder='Send Message'
+					value={message}
+					onChange={(event) => setMessage(event.target.value)}
+					onKeyPress={(event) =>
+						event.key === 'Enter' ? handleSend(event) : null
+					}
+					required={true}
+				/>
+				<Button variant='primary' onClick={(event) => handleSend(event)}>
+					Send
+				</Button>
+			</Form>
 		</Container>
 	)
 }

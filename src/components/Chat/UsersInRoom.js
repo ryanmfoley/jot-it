@@ -1,13 +1,14 @@
 import React from 'react'
 
 const UsersInRoom = ({ room, usersInRoom }) => {
-	// console.log(usersInRoom)
+	// console.log('bloop', usersInRoom)
 
 	if (usersInRoom.length > 1) {
 		return (
-			<div className='chatSideBar'>
-				<h4>Room: {room}</h4>
-				<ul className='usersInRoom'>
+			<div className='chat-sidebar'>
+				<h5>Room Name:</h5>
+				{/* <h5>{{ room }}</h5> */}
+				<ul>
 					{usersInRoom.map((user, index) => (
 						<li key={index}>{user.name}</li>
 					))}
@@ -16,15 +17,16 @@ const UsersInRoom = ({ room, usersInRoom }) => {
 		)
 	} else if (usersInRoom.length) {
 		return (
-			<div className='chatSideBar'>
-				<ul>
-					<li>{usersInRoom[0].name}</li>
-				</ul>
+			<div className='chat-sidebar'>
+				<h5>Room Name:</h5>
+				{/* <h5>{{ room }}</h5> */}
+				<ul>{/* <li>{usersInRoom[0].name}</li> */}</ul>
 			</div>
 		)
-	} else {
-		return <div className='chatSideBar'></div>
 	}
+	// } else {
+	return <div className='chat-sidebar'></div>
+	// }
 }
 
 export default UsersInRoom

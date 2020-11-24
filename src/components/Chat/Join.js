@@ -26,7 +26,7 @@ const Join = () => {
 	}, [])
 
 	return (
-		<div className='joinContainer'>
+		<div className='join-container'>
 			<Container>
 				<h1 className='header'>Join a Chatroom</h1>
 				<Form onSubmit={handleJoin}>

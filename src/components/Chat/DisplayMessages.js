@@ -3,24 +3,22 @@ import React from 'react'
 import ScrollToBottom from 'react-scroll-to-bottom'
 
 const DisplayMessages = ({ name, messages }) => {
-	// console.log('my messages', messages)
-	messages.forEach((message) => console.log(message))
-	if (messages.length > 1) {
+	// console.log('name', name, messages)
+	if (messages.length) {
 		return (
-			<div className='displayMessages'>
+			<div className='display-messages'>
 				<ScrollToBottom>
-					{/* {messages.map(({ user, text }, index) => ( */}
-					{messages.map((message, index) => (
+					{messages.map(({ user, text }, index) => (
 						<div key={index}>
-							{/* {user} */}
-							{message}
+							{user}
+							{text}
 						</div>
 					))}
 				</ScrollToBottom>
 			</div>
 		)
 	}
-	return <div className='displayMessages'>{messages[0]}</div>
+	return <></>
 }
 
 export default DisplayMessages
