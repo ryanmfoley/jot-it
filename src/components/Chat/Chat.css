@@ -37,24 +37,13 @@
 	text-align: center;
 }
 
-/* .display-messages {
-	grid-column: 2/4;
-	grid-row: 2;
-	background-color: #e7ecef;
-	grid: 10px solid green;
-} */
-
 .display-messages {
 	padding: 5% 0;
+	height: 600;
+	width: 400;
 	overflow: auto;
 	flex: auto;
 }
-
-/* .blah {
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	border: 3px solid red;
-} */
 
 .incoming-message {
 	/* width: 50%; */

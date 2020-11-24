@@ -35,11 +35,13 @@ const Chat = ({ match }) => {
 
 			socket.on('chat-message', (message) => {
 				setMessages((messages) => [...messages, message])
+				console.log('messages', messages)
 			})
 
-			// socket.on('user-disconnected', )
+			socket.on('user-disconnected', (users) => setUsersInRoom(users))
 		}
 		return function () {
+			socket.emit('user-disconnected')
 			socket.offAny()
 		}
 	}, [name, room])
@@ -62,9 +64,7 @@ const Chat = ({ match }) => {
 		<Container className='chat-container'>
 			<ChatHeader leaveRoom={leaveRoom} />
 			<UsersInRoom room={room} usersInRoom={usersInRoom} />
-			<div className='blah'>
-				<DisplayMessages name={name} messages={messages} />
-			</div>
+			<DisplayMessages name={name} messages={messages} />
 			<Form className='send-message'>
 				<Form.Control
 					type='text'
