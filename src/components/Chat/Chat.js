@@ -35,7 +35,6 @@ const Chat = ({ match }) => {
 
 			socket.on('chat-message', (message) => {
 				setMessages((messages) => [...messages, message])
-				console.log('messages', messages)
 			})
 
 			socket.on('user-disconnected', (users) => setUsersInRoom(users))
