@@ -26,7 +26,6 @@ const Chat = ({ match }) => {
 		setRoom(match.params.room)
 
 		if (name && room) {
-			// if (match.params.name && match.params.room) {
 			// Join chatroom
 			socket.emit('joinRoom', { name, room })
 
@@ -58,7 +57,9 @@ const Chat = ({ match }) => {
 		<Container className='chat-container'>
 			<ChatHeader leaveRoom={leaveRoom} />
 			<UsersInRoom room={room} usersInRoom={usersInRoom} />
-			<DisplayMessages name={name} messages={messages} />
+			<div className='blah'>
+				<DisplayMessages name={name} messages={messages} />
+			</div>
 			<Form className='send-message'>
 				<Form.Control
 					type='text'
