@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
 import Button from 'react-bootstrap/Button'
 import Container from 'react-bootstrap/Container'
 import Form from 'react-bootstrap/Form'
@@ -13,17 +14,15 @@ import './Chat.css'
 let socket
 
 const Chat = ({ match }) => {
-	const [name, setName] = useState('')
-	const [room, setRoom] = useState('')
+	const [name, setName] = useState(match.params.name)
+	const [room, setRoom] = useState(match.params.room)
 	const [message, setMessage] = useState('')
 	const [messages, setMessages] = useState([])
 	const [usersInRoom, setUsersInRoom] = useState([])
+	const history = useHistory()
 
 	useEffect(() => {
 		socket = io(ENDPOINT)
-
-		setName(match.params.name)
-		setRoom(match.params.room)
 
 		if (name && room) {
 			// Join chatroom
@@ -37,6 +36,11 @@ const Chat = ({ match }) => {
 			socket.on('chat-message', (message) => {
 				setMessages((messages) => [...messages, message])
 			})
+
+			// socket.on('user-disconnected', )
+		}
+		return function () {
+			socket.offAny()
 		}
 	}, [name, room])
 
@@ -51,6 +55,7 @@ const Chat = ({ match }) => {
 
 	const leaveRoom = () => {
 		socket.emit('user-disconnected')
+		history.push('/chat')
 	}
 
 	return (

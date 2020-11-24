@@ -1,0 +1,10 @@
+.join-container {
+	width: 50%;
+	margin: 80px auto;
+	border: 1px solid black;
+	border-radius: 20px;
+}
+
+ul {
+	list-style-type: none;
+}

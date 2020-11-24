@@ -1,0 +1,12 @@
+.task {
+	display: grid;
+	grid-template-columns: 2fr 60px;
+	width: 60%;
+	margin: 10px;
+	justify-content: center;
+	/* border: 1px solid black; */
+}
+
+/* .task p {
+	margin: 20px;
+} */

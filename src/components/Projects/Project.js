@@ -26,18 +26,18 @@ const Project = ({ match }) => {
 	}
 
 	return (
-		<div>
+		<Card className='project'>
+			<Link to={`/projects/${project._id}/update-project`}>Update</Link>
+			<Card.Title>
+				<h2>{project.title}</h2>
+			</Card.Title>
 			<Card.Body>
-				<Link to={`/projects/${project._id}/update-project`}>Update</Link>
-				<Card>
-					<h2>{project.title}</h2>
-					<p>{project.description}</p>
-					<Tasks tasks={project.tasks} setRefresh={setRefresh} />
-					<p>{project.links}</p>
-					<p>{project.dueDate}</p>
-				</Card>
+				<p>{project.description}</p>
+				<Tasks tasks={project.tasks} setRefresh={setRefresh} />
+				<p>{project.links}</p>
+				<p>{project.dueDate}</p>
 			</Card.Body>
-		</div>
+		</Card>
 	)
 }
 

@@ -13,6 +13,16 @@
 
 .project-title {
 	padding-top: 10px;
+	color: ;
+}
+
+.project-link {
+	text-decoration: none !important;
+}
+
+.project {
+	width: 60%;
+	margin: 40px auto;
 }
 
 h2 {

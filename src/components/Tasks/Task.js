@@ -9,12 +9,16 @@ const Task = ({ task, setRefresh }) => {
 	return (
 		<li>
 			{!showEdit && (
-				<p>
-					{task.description}
-					<Button type='button' onClick={() => setShowEdit(true)}>
+				<div className='task'>
+					<p>{task.description}</p>
+					<Button
+						variant='outline-danger'
+						type='button'
+						onClick={() => setShowEdit(true)}
+						size='sm'>
 						Edit
 					</Button>
-				</p>
+				</div>
 			)}
 			{showEdit && (
 				<EditTask

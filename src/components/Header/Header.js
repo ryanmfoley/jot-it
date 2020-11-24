@@ -3,9 +3,11 @@ import { Link } from 'react-router-dom'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 
+import './Header.css'
+
 const Header = () => {
 	return (
-		<Navbar collapseOnSelect expand='md'>
+		<Navbar collapseOnSelect expand='md' className='header'>
 			<Navbar.Brand as={Link} to='/'>
 				<h3>JotIt</h3>
 			</Navbar.Brand>

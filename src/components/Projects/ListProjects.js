@@ -38,7 +38,7 @@ const ListProjects = () => {
 		<Jumbotron className='projects-list'>
 			{projects.map((project) => (
 				<Card key={project._id} className='project-card'>
-					<Link to={`projects/${project._id}`}>
+					<Link to={`projects/${project._id}`} className='project-link'>
 						<Card.Title className='project-title'>
 							<h2>{project.title}</h2>
 						</Card.Title>
