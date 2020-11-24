@@ -8,8 +8,6 @@ import ListProjects from './ListProjects'
 const Projects = () => {
 	const { projects, setProjects } = useContext(ProjectsContext)
 
-	const { setProjects } = useContext(ProjectsContext)
-
 	useEffect(() => {
 		const url = `${ENDPOINT}/api/projects/`
 		axios

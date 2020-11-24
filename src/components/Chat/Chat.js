@@ -38,8 +38,7 @@ const Chat = ({ match }) => {
 		socket.on('chat-message', ({ user, text }) => {
 			console.log('chat-message', user, text)
 			setMessages((messages) => [...messages, text])
-
-		// }
+		})
 	}, [name, room])
 
 	// useEffect(() => {
