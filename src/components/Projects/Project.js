@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { Card } from 'react-bootstrap'
 import axios from 'axios'
-import Card from 'react-bootstrap/Card'
 import ENDPOINT from '../../config/config'
 
 import Tasks from '../Tasks/Tasks'
