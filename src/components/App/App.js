@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Route } from 'react-router-dom'
+
 import ProjectsContext from '../Projects/ProjectsContext'
 import Header from '../Header/Header'
 import Projects from '../Projects/Projects'
@@ -12,9 +13,9 @@ import './App.scss'
 
 function App() {
 	const [projects, setProjects] = useState([])
-	// const [task, setTask] = useState([])
+
 	return (
-		<div>
+		<>
 			<ProjectsContext.Provider value={{ projects, setProjects }}>
 				<Header />
 				<Route path='/projects' exact component={Projects} />
@@ -30,7 +31,7 @@ function App() {
 					render={(routerProps) => <Chat match={routerProps.match} />}
 				/>
 			</ProjectsContext.Provider>
-		</div>
+		</>
 	)
 }
 

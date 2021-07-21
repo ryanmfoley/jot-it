@@ -46,36 +46,27 @@
 }
 
 .incoming-message {
-	/* width: 50%; */
 	display: grid;
 	grid-template-columns: 2fr 1fr 2fr;
-	/* justify-content: start; */
-	/* justify-items: center; */
 	padding: 0 5%;
 	margin-top: 3px;
-	/* border: 2px solid blue; */
 }
 
 .outgoing-message {
 	display: grid;
 	grid-template-columns: 4fr 1fr 1fr 4fr;
-	/* justify-items: center; */
-	/* width: 50%; */
 	justify-content: end;
 	align-items: center;
 	padding: 0 5%;
 	margin-top: 3px;
-	/* border: 2px solid red; */
 }
 
 .incoming-message > .sender {
 	grid-column: 2;
-	/* border: 1px solid green; */
 }
 
 .outgoing-message > .sender {
 	grid-column: 3;
-	/* border: 1px solid green; */
 }
 
 .incoming-message > .message-text {
@@ -85,6 +76,7 @@
 .outgoing-message > .message-text {
 	grid-column: 4;
 	background-color: #a3cef1;
+	/* background: white; */
 	border-radius: 17px;
 }
 
@@ -93,8 +85,7 @@
 	justify-content: center;
 	align-items: center;
 	padding: 10px;
-	background-color: lightgray;
-	border: 1px solid purple;
+	background: lightgray;
 	border-radius: 17px;
 }
 

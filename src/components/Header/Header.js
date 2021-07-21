@@ -1,13 +1,15 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import Navbar from 'react-bootstrap/Navbar'
-import Nav from 'react-bootstrap/Nav'
-
-import './Header.css'
+import { Nav, Navbar } from 'react-bootstrap'
 
 const Header = () => {
 	return (
-		<Navbar collapseOnSelect expand='md' className='header'>
+		<Navbar
+			collapseOnSelect
+			className='mb-5'
+			expand='md'
+			bg='primary'
+			variant='dark'>
 			<Navbar.Brand as={Link} to='/'>
 				<h3>JotIt</h3>
 			</Navbar.Brand>

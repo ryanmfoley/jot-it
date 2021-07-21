@@ -1,12 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { Link } from 'react-router-dom'
+import { Button, Card, Jumbotron } from 'react-bootstrap'
 import axios from 'axios'
 
-import Jumbotron from 'react-bootstrap/Jumbotron'
-import Card from 'react-bootstrap/Card'
-import Button from 'react-bootstrap/Button'
 import ENDPOINT from '../../config/config'
-
 import ProjectsContext from './ProjectsContext'
 import './ListProjects.css'
 
@@ -28,7 +25,7 @@ const ListProjects = () => {
 			}
 		}
 		handleDelete()
-	}, [deleteProject])
+	}, [projects, setProjects, deleteProject])
 
 	if (!projects.length) {
 		return <h5>Loading...</h5>

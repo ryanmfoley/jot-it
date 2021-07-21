@@ -2,17 +2,16 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Card } from 'react-bootstrap'
 import axios from 'axios'
-import ENDPOINT from '../../config/config'
 
+import ENDPOINT from '../../config/config'
 import Tasks from '../Tasks/Tasks'
 
 const Project = ({ match }) => {
 	const [project, setProject] = useState({})
 	const [refresh, setRefresh] = useState(true)
+	const url = `${ENDPOINT}/api/projects/${match.params.id}`
 
 	useEffect(() => {
-		const id = match.params.id
-		const url = `${ENDPOINT}/api/projects/${id}`
 		if (refresh) {
 			axios.get(url).then((json) => {
 				setProject(json.data)
